@@ -1,13 +1,21 @@
 ContactManager.module('ContactsApp.List', function (List, ContactManager, Backbone, Marionette, $, _){
   List.Controller = {
     listContacts: function(){
-      console.log ("list");
       var contacts = ContactManager.request("contact:entities");
-      console.log(contacts);
+
       var contactsListView = new List.Contacts({
         collection: contacts
       });
-      console.log(contactsListView)
+
+      contactsListView.on("childview:contact:delete", function (chlidView,model){
+        contacts.remove(model);
+      });
+      contactsListView.on("childview:contact:highlighting:toggled", function (childView, model){
+        console.log("Highlighting togggled on model: ",model);
+      });
+      contactsListView.on("childview:contact:show", function (chlidView, model) {
+        ContactManager.ContactsApp.Show.Controller.showContact(model);
+      });
       ContactManager.mainRegion.show(contactsListView);
     }
   }
