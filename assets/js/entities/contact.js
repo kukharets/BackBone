@@ -1,9 +1,12 @@
 ContactManager.module("Entities", function (Entities, ContactManager,Backbone,Marionette, $, _) {
-    Entities.Contact = Backbone.Model.extend({});
-
+    Entities.Contact = Backbone.Model.extend({
+        urlRoot: "contacts"
+    });
+    Entities.configureStorage(Entities.Contact);
     Entities.ContactCollection = Backbone.Collection.extend({
       model: Entities.Contact,
-      comparator: "firstName"
+      comparator: "firstName",
+        url: "contacts"
     });
 
     var contacts;

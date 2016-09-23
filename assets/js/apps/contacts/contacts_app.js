@@ -6,6 +6,7 @@ ContactManager.module("ContactsApp", function(ContactsApp, ContactManager, Backb
     }
   });
   var API = {
+
     listContacts: function(){
       ContactsApp.List.Controller.listContacts();
     },
