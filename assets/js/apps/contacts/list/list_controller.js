@@ -8,7 +8,11 @@ ContactManager.module('ContactsApp.List', function (List, ContactManager, Backbo
       });
       contactsListView.on("childview:contact:delete", function (childView, model){
         contacts.remove(model);
-      })
+      });
+      contactsListView.on("childview:contact:show", function (chlidView, model) {
+        ContactManager.trigger("contacts:show", model.get("id"));
+      });
+
       ContactManager.mainRegion.show(contactsListView);
     }
   }
