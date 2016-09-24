@@ -3,33 +3,22 @@ ContactManager.module("ContactsApp.Edit", function(Edit, ContactManager, Backbon
     editContact: function(id){
       var loadingView = new ContactManager.Common.Views.Loading({
         title: "Artificial Loading Delay",
-        message: "Data loading is delayed to demonstrate using a loading view."
+        message: "Data loading is deleyaed to demonstae using a oading view."
       });
-      ContactManager.regions.main.show(loadingView);
+      ContactManager.mainRegion.show(loadingView);
 
       var fetchingContact = ContactManager.request("contact:entity", id);
-      $.when(fetchingContact).done(function(contact){
+      $.when(fetchingContact).done(function (contact) {
         var view;
-        if(contact !== undefined){
+        if (contact !==undefined){
           view = new Edit.Contact({
-            model: contact,
-            generateTitle: true
+            model: contact
           });
-
-          view.on("form:submit", function(data){
-            if(contact.save(data)){
-              ContactManager.trigger("contact:show", contact.get("id"));
-            }
-            else{
-              view.triggerMethod("form:data:invalid", contact.validationError);
-            }
-          });
-        }
-        else{
+        } else
+        {
           view = new ContactManager.ContactsApp.Show.MissingContact();
         }
-
-        ContactManager.regions.main.show(view);
+        ContactManager.mainRegion.show(view);
       });
     }
   };

@@ -50,11 +50,33 @@
     <div class="alert alert-error">This contact doest't exist !</div>
 </script>
 <script type="text/template" id="loading-view">
-    <h1>Artificial Loading Delay</h1>
-    <p>Data loading is delayed to demonstrate using a loading view.</p>
+    <h1><%= title %></h1>
+    <p><% =message %></p>
     <div id="spinner"></div>
 </script>
+<script type="text/template" id="contact-form">
+<h1>Edit <%= firstName %> <%= lastName %></h1>
+<form>
+    <div class="control-group">
+        <label for="contact-firstName" class="control-label">
+            First name:</label>
+        <input type="text" id="contact-firstName" name="firstName" value="<%= firstName %>"/>
+    </div>
 
+    <div class="control-group">
+        <label for="contact-lastName" class="control-label">
+            Last name:</label>
+        <input type="text" id="contact-lastName" name="lastName" value="<%= lastName %>"/>
+    </div>
+
+    <div class="control-group">
+        <label for="contact-phoneNumber" class="control-label">
+            First name:</label>
+        <input type="text" id="contact-phoneNumber" name="phoneNumber" value="<%= phoneNumber %>"/>
+    </div>
+    <button class="btn js-submit">Save</button>
+</form>
+</script>
 
 
 <script src="./assets/js/vendor/jquery.js"></script>
@@ -75,7 +97,8 @@
 <script src="./assets/js/apps/contacts/show/show_controller.js"></script>
 <script src="./assets/js/apps/contacts/show/show_view.js"></script>
 <script src="./assets/js/apps/contacts/contacts_app.js"></script>
-
+<script src="./assets/js/apps/contacts/edit/edit_view.js"></script>
+<script src="./assets/js/apps/contacts/edit/edit_controller.js"></script>
 
 
 <script type="text/javascript">
